@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>İyi ki Doğdun Yarennur! 🎉</title>
+  <style>
+    :root{
+      --bg1:#070a18; --bg2:#0e1a3b;
+      --glass: rgba(15, 23, 55, .65);
+      --border: rgba(255,255,255,.14);
+      --txt:#eef2ff; --muted:#c1ccff;
+      --pink:#ff4fd8; --blue:#4dd6ff; --gold:#ffd86b; --green:#7dffb5;
+      --shadow: 0 18px 70px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--txt);
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(900px 600px at 15% 10%, rgba(77,214,255,.28), transparent 60%),
+        radial-gradient(900px 650px at 85% 30%, rgba(255,79,216,.22), transparent 55%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    /* arka plan ışıkları */
+    .blob{
+      position:fixed; inset:auto;
+      width:min(520px, 70vw);
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      filter: blur(45px);
+      opacity:.20;
+      z-index:-2;
+      animation: floaty 9s ease-in-out infinite;
+    }
+    .b1{left:-120px; top:-120px; background:var(--blue)}
+    .b2{right:-140px; top:80px; background:var(--pink); animation-delay:-3s}
+    .b3{left:10%; bottom:-180px; background:var(--gold); animation-delay:-6s}
+    @keyframes floaty{
+      0%,100%{transform: translate(0,0) scale(1)}
+      50%{transform: translate(22px, -18px) scale(1.06)}
+    }
+
+    .wrap{
+      width:min(980px, 92vw);
+      margin:0 auto;
+      padding: clamp(16px, 3vw, 28px) 0 90px;
+    }
+
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding: 10px 0 16px;
+      flex-wrap:wrap;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border:1px solid var(--border);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      font-weight:700;
+      white-space:nowrap;
+    }
+    .badge small{opacity:.85; font-weight:600}
+    .btns{display:flex; gap:10px; flex-wrap:wrap}
+    button{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.10);
+      color: var(--txt);
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:700;
+      cursor:pointer;
+      backdrop-filter: blur(10px);
+      transition: transform .08s ease, background .2s ease;
+    }
+    button:hover{background: rgba(255,255,255,.14)}
+    button:active{transform: scale(.98)}
+    .primary{
+      background: linear-gradient(90deg, rgba(77,214,255,.22), rgba(255,79,216,.22));
+    }
+
+    .card{
+      background: var(--glass);
+      border:1px solid var(--border);
+      border-radius: 22px;
+      padding: clamp(16px, 3.2vw, 26px);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: clamp(14px, 3vw, 24px);
+      align-items:center;
+    }
+    @media (max-width: 840px){
+      .hero{grid-template-columns:1fr}
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(30px, 5.2vw, 56px);
+      letter-spacing:-.02em;
+      line-height:1.05;
+    }
+    .sub{
+      margin:0 0 18px;
+      color: var(--muted);
+      font-size: clamp(14px, 2.2vw, 18px);
+      line-height:1.5;
+    }
+
+    .name{
+      display:inline-block;
+      background: linear-gradient(90deg, var(--blue), var(--pink), var(--gold));
+      -webkit-background-clip: text;
+      background-clip:text;
+      color: transparent;
+      animation: shimmer 2.6s ease-in-out infinite;
+    }
+    @keyframes shimmer{
+      0%,100%{filter: drop-shadow(0 0 0 rgba(255,255,255,0))}
+      50%{filter: drop-shadow(0 0 14px rgba(255,255,255,.20))}
+    }
+
+    /* mini animasyonlu pasta */
+    .cake{
+      width:min(320px, 82vw);
+      margin: 0 auto;
+      aspect-ratio: 1/1;
+      position:relative;
+      display:grid;
+      place-items:center;
+    }
+    .cake .plate{
+      width:78%; height:18%;
+      background: rgba(255,255,255,.12);
+      border:1px solid var(--border);
+      border-radius:999px;
+      position:absolute; bottom:10%;
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+    }
+    .cake .base{
+      width:64%; height:42%;
+      background: linear-gradient(180deg, rgba(255,216,107,.28), rgba(255,79,216,.14));
+      border:1px solid var(--border);
+      border-radius: 18px;
+      position:absolute; bottom:22%;
+    }
+    .cake .cream{
+      width:66%; height:18%;
+      background: rgba(255,255,255,.16);
+      border:1px solid var(--border);
+      border-radius: 18px;
+      position:absolute; bottom:54%;
+    }
+    .candle{
+      width:10%; height:22%;
+      background: rgba(77,214,255,.22);
+      border:1px solid var(--border);
+      border-radius: 12px;
+      position:absolute; bottom:62%;
+    }
+    .flame{
+      width:10%; height:10%;
+      position:absolute; bottom:82%;
+      border-radius: 60% 60% 60% 60%;
+      background: radial-gradient(circle at 40% 30%, rgba(255,255,255,.85), transparent 45%),
+                  radial-gradient(circle at 50% 60%, rgba(255,216,107,.9), rgba(255,79,216,.55));
+      filter: blur(.2px);
+      animation: flicker .18s infinite alternate;
+      transform-origin: 50% 80%;
+    }
+    @keyframes flicker{
+      from{transform: rotate(-4deg) scale(1)}
+      to{transform: rotate(4deg) scale(1.04)}
+    }
+
+    /* alt kutular */
+    .grid{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 900px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width: 560px){.grid{grid-template-columns:1fr}}
+    .box{
+      background: rgba(255,255,255,.08);
+      border:1px solid var(--border);
+      border-radius: 18px;
+      padding: 14px;
+      min-height: 86px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      transition: transform .12s ease;
+    }
+    .box:hover{transform: translateY(-2px)}
+    .dot{
+      width:14px; height:14px; border-radius:50%;
+      margin-top:4px;
+      background: linear-gradient(180deg, var(--blue), var(--pink));
+      box-shadow: 0 0 18px rgba(77,214,255,.25);
+      flex:0 0 auto;
+    }
+    .box b{display:block; margin-bottom:4px}
+    .box p{margin:0; color:var(--muted); line-height:1.45; font-size:14.5px}
+
+    footer{
+      margin-top: 14px;
+      text-align:center;
+      color: rgba(255,255,255,.75);
+      font-size: 13.5px;
+    }
+
+    /* Konfeti */
+    .confetti{
+      position:fixed; inset:-10px 0 auto 0;
+      pointer-events:none;
+      z-index: 50;
+    }
+    .piece{
+      position:absolute;
+      width: 10px; height: 14px;
+      border-radius: 4px;
+      opacity:.95;
+      animation: fall linear forwards;
+      will-change: transform;
+    }
+    @keyframes fall{
+      to{ transform: translate3d(var(--dx), 110vh, 0) rotate(var(--rot)); opacity:1 }
+    }
+
+    /* Kalpler */
+    .heart{
+      position:fixed; left:50%; top:50%;
+      font-size: 18px;
+      pointer-events:none;
+      opacity: 0;
+      animation: pop 1.4s ease forwards;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,.35));
+      z-index: 40;
+    }
+    @keyframes pop{
+      0%{transform: translate(-50%,-50%) scale(.6); opacity:0}
+      15%{opacity:1}
+      100%{transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.3); opacity:0}
+    }
+
+    /* toast */
+    .toast{
+      position:fixed; left:50%; bottom:16px;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.35);
+      border: 1px solid var(--border);
+      padding:10px 14px;
+      border-radius: 999px;
+      color:#fff;
+      backdrop-filter: blur(10px);
+      opacity:0;
+      transition: opacity .25s ease, transform .25s ease;
+      z-index: 60;
+      max-width: 92vw;
+      text-align:center;
+    }
+    .toast.show{
+      opacity:1;
+      transform: translateX(-50%) translateY(-6px);
+    }
+
+    /* ---------- GALERİ BAŞLIK ---------- */
+    .gallery h2{
+      text-align:center;
+      margin:0 0 14px;
+      font-size: clamp(20px, 4vw, 28px);
+      background: linear-gradient(90deg, var(--blue), var(--pink), var(--gold));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    /* ---------- FX SLIDER (izole) ---------- */
+    .fx-slider{
+      width:100%;
+      max-width: 920px;
+      margin: 0 auto;
+      position:relative;
+      overflow:hidden;
+      border-radius:20px;
+      border:1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.06);
+    }
+    .fx-slides{
+      position:relative;
+      height: clamp(240px, 48vw, 460px);
+    }
+    .fx-slide{
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transform: scale(1.02);
+      filter: blur(10px);
+      transition: opacity .7s ease, transform .9s ease, filter .7s ease;
+      will-change: opacity, transform, filter;
+    }
+    .fx-slide.is-active{
+      opacity:1;
+      transform: scale(1);
+      filter: blur(0px);
+    }
+    .fx-slide img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1);
+      transition: transform .9s ease;
+    }
+    .fx-slider:hover .fx-slide.is-active img{
+      transform: scale(1.07);
+    }
+
+    /* Caption */
+    .fx-caption{
+      position:absolute;
+      left:12px; right:12px;
+      bottom:52px;
+      z-index:7;
+      padding:10px 12px;
+      border-radius:16px;
+      background: rgba(0,0,0,.28);
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      font-weight:700;
+      text-align:center;
+      opacity:0;
+      transform: translateY(8px);
+      transition: opacity .45s ease, transform .45s ease;
+      pointer-events:none;
+    }
+    .fx-caption.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* Oklar */
+    .fx-nav{
+      position:absolute;
+      top:50%;
+      transform: translateY(-50%);
+      width:44px; height:44px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.28);
+      color: var(--txt);
+      font-size: 26px;
+      line-height: 1;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      backdrop-filter: blur(10px);
+      z-index:8;
+      opacity:0;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .fx-prev{left:12px}
+    .fx-next{right:12px}
+    .fx-slider:hover .fx-nav{opacity:1}
+    .fx-nav:active{transform: translateY(-50%) scale(.96)}
+
+    /* Dots */
+    .fx-dots{
+      position:absolute;
+      left:50%;
+      bottom:12px;
+      transform: translateX(-50%);
+      display:flex;
+      gap:8px;
+      z-index:9;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+    }
+    .fx-dot{
+      width:10px; height:10px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.18);
+      cursor:pointer;
+      transition: transform .15s ease, background .2s ease;
+    }
+    .fx-dot.is-active{
+      background: linear-gradient(180deg, var(--blue), var(--pink));
+      border-color: rgba(255,255,255,.55);
+      transform: scale(1.15);
+    }
+    @media (prefers-reduced-motion: reduce){
+      .fx-slide, .fx-slide img, .fx-caption{transition:none !important}
+    }
+  </style>
+</head>
+<body>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="badge">🎂 <span>Doğum Günü Sürprizi</span> <small>— Yarennur</small></div>
+      <div class="btns">
+        <button class="primary" id="btnConfetti">Konfeti Patlat 🎊</button>
+        <button id="btnHearts">Kalp Yağmuru 💖</button>
+        <button id="btnMusic">Müzik Aç/Kapat 🔊</button>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="hero">
+        <div>
+          <h1>İyi ki doğdun <span class="name">Yarennur</span>! 🎉</h1>
+          <p class="sub">
+            Bugün senin günün! Sağlık, mutluluk, bol kahkaha ve unutulmaz anılarla dolu
+            harika bir yaş olsun. 🎁✨
+          </p>
+
+          <div class="grid">
+            <div class="box"><div class="dot"></div><div><b>Mutluluk</b><p>Her günün güzel bir sebeple başlasın.</p></div></div>
+            <div class="box"><div class="dot"></div><div><b>Başarı</b><p>İstediğin her şey adım adım gerçek olsun.</p></div></div>
+            <div class="box"><div class="dot"></div><div><b>Sağlık</b><p>Kendine iyi bak, hep enerjin yerinde olsun.</p></div></div>
+          </div>
+        </div>
+
+        <div class="cake" aria-label="Doğum günü pastası">
+          <div class="flame"></div>
+          <div class="candle"></div>
+          <div class="cream"></div>
+          <div class="base"></div>
+          <div class="plate"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ FOTOĞRAF SLIDER (HEPSİ BURADA) -->
+    <section class="card gallery" style="margin-top:16px;">
+      <h2>💖 Yarennur’dan Anılar 💖</h2>
+
+      <div class="fx-slider" id="fxSlider">
+        <div class="fx-slides" id="fxSlides"></div>
+
+        <div class="fx-caption" id="fxCaption">Nice mutlu yıllara! 🎉</div>
+
+        <button class="fx-nav fx-prev" id="fxPrev" aria-label="Önceki">‹</button>
+        <button class="fx-nav fx-next" id="fxNext" aria-label="Sonraki">›</button>
+
+        <div class="fx-dots" id="fxDots" aria-label="Slayt noktaları"></div>
+      </div>
+    </section>
+
+    <footer>
+      💌 Bu site sevgiyle hazırlandı. (Fotoğraflar: <b>assets/img/yaren-1.jpg</b> … <b>yaren-5.jpg</b>)
+    </footer>
+  </div>
+
+  <div class="confetti" id="confettiLayer"></div>
+  <div class="toast" id="toast">🎉 Nice mutlu yıllara Yarennur!</div>
+
+  <script>
+    // ---------- Toast ----------
+    const toastEl = document.getElementById("toast");
+    let toastTimer = null;
+    function toast(msg){
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=>toastEl.classList.remove("show"), 1800);
+    }
+
+    // ---------- Mini müzik ----------
+    let audioCtx = null;
+    let isPlaying = false;
+    window.isPlaying = false; // slider senkronu için dışarı aç
+    let osc = null, gain = null;
+
+    function startMusic(){
+      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      osc = audioCtx.createOscillator();
+      gain = audioCtx.createGain();
+      osc.type = "sine";
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      gain.gain.value = 0.04;
+
+      const notes = [262, 294, 330, 392, 330, 294, 262, 330, 392, 440, 392, 330];
+      let i = 0;
+      osc.frequency.value = notes[0];
+      osc.start();
+
+      const t = setInterval(()=>{
+        if(!isPlaying) return clearInterval(t);
+        i = (i + 1) % notes.length;
+        osc.frequency.setTargetAtTime(notes[i], audioCtx.currentTime, 0.02);
+      }, 230);
+
+      isPlaying = true;
+      window.isPlaying = true;
+      toast("Müzik açıldı 🔊");
+    }
+    function stopMusic(){
+      if(osc){
+        osc.stop();
+        osc.disconnect();
+        gain.disconnect();
+        osc = null; gain = null;
+      }
+      isPlaying = false;
+      window.isPlaying = false;
+      toast("Müzik kapandı 🔇");
+    }
+    document.getElementById("btnMusic").addEventListener("click", ()=>{
+      if(!isPlaying) startMusic();
+      else stopMusic();
+      // slider hız güncellemesi için olay
+      document.dispatchEvent(new Event("musicToggle"));
+    });
+
+    // ---------- Konfeti ----------
+    const confettiLayer = document.getElementById("confettiLayer");
+    const colors = ["#ff4fd8","#4dd6ff","#ffd86b","#7dffb5","#ffffff"];
+    function makeConfetti(count=120){
+      confettiLayer.innerHTML = "";
+      const w = window.innerWidth;
+      for(let i=0;i<count;i++){
+        const p = document.createElement("div");
+        p.className="piece";
+        const left = Math.random()*w;
+        const delay = Math.random()*0.6;
+        const dur = 2.6 + Math.random()*1.6;
+        const dx = (Math.random()*240 - 120) + "px";
+        const rot = (Math.random()*720 - 360) + "deg";
+        p.style.left = left + "px";
+        p.style.top = (-20 - Math.random()*80) + "px";
+        p.style.background = colors[Math.floor(Math.random()*colors.length)];
+        p.style.animationDuration = dur + "s";
+        p.style.animationDelay = delay + "s";
+        p.style.setProperty("--dx", dx);
+        p.style.setProperty("--rot", rot);
+        confettiLayer.appendChild(p);
+      }
+      toast("Konfeti! 🎊");
+      setTimeout(()=>confettiLayer.innerHTML="", 5200);
+    }
+    document.getElementById("btnConfetti").addEventListener("click", ()=>makeConfetti());
+
+    // ---------- Kalpler ----------
+    function heartBurst(n=16){
+      for(let i=0;i<n;i++){
+        const h = document.createElement("div");
+        h.className="heart";
+        h.textContent = Math.random() > 0.5 ? "💖" : "💗";
+        const x = (Math.random()*260 - 130) + "px";
+        const y = (Math.random()*240 - 140) + "px";
+        h.style.setProperty("--x", x);
+        h.style.setProperty("--y", y);
+        h.style.left = (20 + Math.random()*60) + "vw";
+        h.style.top  = (30 + Math.random()*40) + "vh";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(), 1600);
+      }
+      toast("💖 Yarennur 💖");
+    }
+    document.getElementById("btnHearts").addEventListener("click", ()=>heartBurst());
+
+    // ---------- Slider (HEPSİ) ----------
+    (function(){
+      const slidesWrap = document.getElementById("fxSlides");
+      const dotsWrap   = document.getElementById("fxDots");
+      const captionEl  = document.getElementById("fxCaption");
+      const slider     = document.getElementById("fxSlider");
+      const prevBtn    = document.getElementById("fxPrev");
+      const nextBtn    = document.getElementById("fxNext");
+
+      // 5 fotoğrafın listesi
+      const images = [
+        {src:"assets/img/yaren-1.jpg", cap:"Yarennur 💖 Nice mutlu yıllara!"},
+        {src:"assets/img/yaren-2.jpg", cap:"Gülüşün hep böyle kalsın ✨"},
+        {src:"assets/img/yaren-3.jpg", cap:"İyi ki varsın! 🎂"},
+        {src:"assets/img/yaren-4.jpg", cap:"Bugün senin günün 🎉"},
+        {src:"assets/img/yaren-5.jpg", cap:"Mutluluk seninle olsun 💫"}
+      ];
+
+      // “En güzel” fotoğrafı ilk açılışa sabitle (varsayılan yaren-1)
+      const bestIndex = 0;
+
+      // Fisher-Yates shuffle
+      function shuffle(arr){
+        for(let i=arr.length-1;i>0;i--){
+          const j = Math.floor(Math.random()*(i+1));
+          [arr[i],arr[j]] = [arr[j],arr[i]];
+        }
+        return arr;
+      }
+
+      // best ilk, geri kalan karışık
+      const rest = images.filter((_,i)=>i!==bestIndex);
+      shuffle(rest);
+      const ordered = [images[bestIndex], ...rest];
+
+      // DOM’a slide bas
+      slidesWrap.innerHTML = "";
+      ordered.forEach((img, i)=>{
+        const s = document.createElement("div");
+        s.className = "fx-slide" + (i===0 ? " is-active" : "");
+        const im = document.createElement("img");
+        im.src = img.src;
+        im.alt = "";
+        s.appendChild(im);
+        slidesWrap.appendChild(s);
+      });
+
+      const slides = Array.from(slidesWrap.querySelectorAll(".fx-slide"));
+
+      // Dots üret
+      dotsWrap.innerHTML = "";
+      const dots = slides.map((_, i)=>{
+        const b = document.createElement("button");
+        b.type="button";
+        b.className="fx-dot" + (i===0 ? " is-active" : "");
+        b.setAttribute("aria-label", (i+1) + ". fotoğraf");
+        b.addEventListener("click", ()=>go(i,true));
+        dotsWrap.appendChild(b);
+        return b;
+      });
+
+      let index = 0;
+      let timer = null;
+
+      function showCaption(text){
+        captionEl.textContent = text;
+        captionEl.classList.remove("show");
+        // küçük gecikme: fade-in net olsun
+        requestAnimationFrame(()=>setTimeout(()=>captionEl.classList.add("show"), 40));
+      }
+
+      function setActive(i){
+        slides.forEach((s,k)=>s.classList.toggle("is-active", k===i));
+        dots.forEach((d,k)=>d.classList.toggle("is-active", k===i));
+        showCaption(ordered[i]?.cap || "Nice mutlu yıllara! 🎉");
+      }
+
+      // Gece yavaş + müzik varsa daha ritimli
+      function getDelay(){
+        const h = new Date().getHours();
+        const isNight = (h >= 22 || h < 7);
+        const base = isNight ? 4200 : 3000;
+        // müzik açıksa biraz daha hızlı (ritim)
+        if(window.isPlaying) return Math.max(2200, base - 900);
+        return base;
+      }
+
+      // “Aynı fotoğraf arka arkaya gelmesin” (unik fotoğraflarda zaten olmaz,
+      // ama ileri/geri tıklamalarda da güvence olsun)
+      function nextIndex(){
+        let ni = (index + 1) % slides.length;
+        if(ni === index) ni = (ni + 1) % slides.length;
+        return ni;
+      }
+
+      function go(i, userAction=false){
+        if(i === index && slides.length > 1){
+          i = (i + 1) % slides.length;
+        }
+        index = (i + slides.length) % slides.length;
+        setActive(index);
+        if(userAction) restart();
+      }
+
+      function next(){ go(nextIndex(), false); }
+      function prev(){ go(index - 1, true); }
+
+      function start(){
+        stop();
+        timer = setInterval(next, getDelay());
+      }
+      function stop(){
+        if(timer) clearInterval(timer);
+        timer = null;
+      }
+      function restart(){
+        start();
+      }
+
+      prevBtn.addEventListener("click", prev);
+      nextBtn.addEventListener("click", ()=>{ next(); restart(); });
+
+      // Hover / dokunmada dur
+      slider.addEventListener("mouseenter", stop);
+      slider.addEventListener("mouseleave", start);
+      slider.addEventListener("touchstart", stop, {passive:true});
+      slider.addEventListener("touchend", start, {passive:true});
+
+      // Sayfa görünmüyorsa dur
+      document.addEventListener("visibilitychange", ()=>{
+        if(document.hidden) stop();
+        else start();
+      });
+
+      // Müzik aç/kapat olunca hız güncelle
+      document.addEventListener("musicToggle", ()=>setTimeout(restart, 60));
+
+      // Başlat
+      setActive(0);
+      start();
+    })();
+
+    // ---------- İlk açılış sürprizi ----------
+    window.addEventListener("load", ()=>{
+      setTimeout(()=>makeConfetti(90), 450);
+      setTimeout(()=>heartBurst(12), 900);
+      toast("Nice mutlu yıllara Yarennur! 🎂");
+    });
+  </script>
+</body>
+</html>
